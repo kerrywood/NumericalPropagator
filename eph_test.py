@@ -34,11 +34,14 @@ D2 = astropy.time.Time(truth_eph['time_dt'].iloc[-1])
 # get the initial state vector
 init_sv = truth_eph.iloc[0][ ['x','y','z','dx','dy','dz'] ].values
 print('Initial state vector: {}'.format( init_sv ) )
+print('\tP : {}'.format( init_sv[:3] ) )
+print('\tV : {}'.format( init_sv[3:] ) )
 
 # perturbations holder
 P_twobody = perturbations.perturbations( D1, D2 )
 P_j2      = perturbations.perturbations( D1, D2 )
 P_j2.addJ2()
+P_j2.addAtmosphereExponential( C_D=10 )
 
 #P.addAll()
 #P.addMoon()

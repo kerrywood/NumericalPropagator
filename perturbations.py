@@ -6,7 +6,6 @@ import astropy.units as u
 from scipy.integrate import DOP853, solve_ivp
 from poliastro.core.perturbations import third_body, J2_perturbation, J3_perturbation, radiation_pressure, atmospheric_drag_exponential
 from poliastro.bodies import Earth, Moon, Sun
-from poliastro.ephem import build_ephem_interpolant
 from poliastro.constants import H0_earth, Wdivc_sun, rho0_earth
 from poliastro.twobody import Orbit
 from poliastro.core.propagation import func_twobody
