@@ -60,8 +60,13 @@ tle_epoch = pd.to_datetime( tleo.jdsatepoch, origin='julian', unit='D')
 dates   = pd.date_range( tle_epoch, tle_epoch + pd.Timedelta(days=7), freq='5min')
 atimes  = astropy.time.Time( dates )
 off_s   = (atimes - atimes[0]).jd * 86400
+
+print('*'*100)
+print('Propagating TLE to GCRS')
 tle_eph = propTLEtoGCRS( *TLE, dates )
 
+print('*'*100)
+print('Setting up perturbations and numerically propagating')
 P = perturbations.perturbations( atimes[0], atimes[-1] )
 # P.addAll()
 # P.addMoon()
