@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "NumericalPropagator"
+dependencies= [ 
+	'numpy',
+	'scipy',
+    'sgp4',
+    'astropy',
+    'pandas'
+]
+version = "0.0.1"
+authors = [
+  { name="Kerry N. Wood", email="kerry.wood@asterism.ai" }
+]
+
+[project.urls]
+Homepage = "https://github.com/AsterismAI/NumericalPropagator"
+Issues = "https://github.com/AsterismAI/NumericalPropagator/issues"
