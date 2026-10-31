@@ -1,26 +1,21 @@
 from numba import njit as jit
 import numpy as np
 
-
 @jit
 def _kepler_equation(E, M, ecc):
     return E_to_M(E, ecc) - M
-
 
 @jit
 def _kepler_equation_prime(E, M, ecc):
     return 1 - ecc * np.cos(E)
 
-
 @jit
 def _kepler_equation_hyper(F, M, ecc):
     return F_to_M(F, ecc) - M
 
-
 @jit
 def _kepler_equation_prime_hyper(F, M, ecc):
     return ecc * np.cosh(F) - 1
-
 
 def newton_factory(func, fprime):
     @jit

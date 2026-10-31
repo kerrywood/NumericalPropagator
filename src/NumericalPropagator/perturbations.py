@@ -1,35 +1,37 @@
 from datetime import datetime, timedelta
 import numpy as np
+
 import astropy.time
 import astropy.units as u
+import astropy.coordinates
 
 from scipy.integrate import DOP853, solve_ivp
+import scipy.interpolate
 from NumericalPropagator.poliastro.perturbations import third_body, J2_perturbation, J3_perturbation, radiation_pressure, atmospheric_drag_exponential
 from NumericalPropagator.poliastro.base import func_twobody
-import scipy.interpolate
-
 from NumericalPropagator import body_position
 
 # -----------------------------------------------------------------------------------------------------
 # constants : our canonical units are km and s
 #J2     = Earth.J2.value
-J2     = 0.00108263
 #J3     = Earth.J3.value
-J3     = -2.5326613168e-06
 #EarthR = Earth.R.to(u.km).value
-EarthR = 6378.1366
 #EarthK = Earth.k.to(u.km ** 3 / u.s ** 2).value
-EarthK = 398600.44180000003
 #MoonK  = Moon.k.to(u.km**3 / u.s**2).value
-MoonK   = 4902.79981
 #SunK   = Sun.k.to(u.km**3 / u.s**2).value
-SunK   = 132712442099.00002
 #WdivcC = Wdivc_sun.to_value( u.kg * u.km / u.s**2)
-WdivcC = 102037593062041.36
 #rho0C  = rho0_earth.to(u.kg / u.km**3).value
-rho0C  = 1300000000.0
 #H0C    = H0_earth.to(u.km).value  # km
-H0C    =8.5
+J2     = 0.00108263
+J3     = -2.5326613168e-06
+EarthK = 398600.44180000003
+EarthR = 6378.1366
+MoonK  = 4902.79981
+SunK   = 132712442099.00002
+WdivcC = 102037593062041.36
+rho0C  = 1300000000.0
+H0C    = 8.5
+
 
 # -----------------------------------------------------------------------------------------------------
 class perturbations: 

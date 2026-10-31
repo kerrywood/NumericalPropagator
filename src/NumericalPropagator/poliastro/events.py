@@ -5,7 +5,6 @@ from NumericalPropagator.poliastro.linalg import norm
 from NumericalPropagator.poliastro.elements import coe_rotation_matrix, rv2coe
 from NumericalPropagator.poliastro.util import planetocentric_to_AltAz
 
-
 @jit
 def eclipse_function(k, u_, r_sec, R_sec, R_primary, umbra=True):
     """Calculates a continuous shadow function.
@@ -59,7 +58,6 @@ def eclipse_function(k, u_, r_sec, R_sec, R_primary, umbra=True):
 
     return shadow_function
 
-
 @jit
 def line_of_sight(r1, r2, R):
     """Calculates the line of sight condition between two position vectors, r1 and r2.
@@ -88,7 +86,6 @@ def line_of_sight(r1, r2, R):
     theta_2 = np.arccos(R / r2_norm)
 
     return (theta_1 + theta_2) - theta
-
 
 @jit
 def elevation_function(k, u_, phi, theta, R, R_p, H):

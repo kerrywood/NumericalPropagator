@@ -1,7 +1,6 @@
 from numba import njit as jit
 import numpy as np
 
-
 @jit
 def func_twobody(t0, u_, k):
     """Differential equation for the initial value two body problem.

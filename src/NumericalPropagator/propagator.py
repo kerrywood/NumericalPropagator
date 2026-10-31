@@ -1,25 +1,20 @@
 from datetime import datetime, timedelta
 import numpy as np
-import json
 import astropy.time
 import astropy.units as u
 import pandas as pd
-
 from sgp4.propagation import sgp4 as sgprop
 from sgp4.io import twoline2rv
 from sgp4.earth_gravity import wgs72, wgs84
-
 import astropy.coordinates
 import astropy.time
 import astropy.units as u
-
 import logging 
-
 from scipy.integrate import DOP853, solve_ivp
 
 from NumericalPropagator import perturbations
 
-
+# -----------------------------------------------------------------------------------------------------
 class propagator( perturbations.perturbations ):   
     def __init__( self, date1 : datetime = None, date2 : datetime = None ):
         if date1 is None:
@@ -66,6 +61,8 @@ class propagator( perturbations.perturbations ):
             return None
         return np.vstack( result.sol(offset_s) ).T
 
+
+# =====================================================================================================
 if __name__ == "__main__":
     P = propagator() 
     P.addJ2()

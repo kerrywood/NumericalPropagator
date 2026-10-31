@@ -1,6 +1,7 @@
 import numpy as np
 import scipy.interpolate
 import astropy.time
+import astropy.coordinates
 import astropy.units as u
 
 # -----------------------------------------------------------------------------------------------------

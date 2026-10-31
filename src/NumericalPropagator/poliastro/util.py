@@ -2,7 +2,6 @@ from numba import njit as jit
 import numpy as np
 from numpy import cos, sin
 
-
 @jit
 def rotation_matrix(angle, axis):
     assert axis in (0, 1, 2)
@@ -20,7 +19,6 @@ def rotation_matrix(angle, axis):
     R[..., a2, a2] = c
     return R
 
-
 @jit
 def alinspace(start, stop=None, num=50, endpoint=True):
     """Return increasing, evenly spaced angular values over a specified interval."""
@@ -37,7 +35,6 @@ def alinspace(start, stop=None, num=50, endpoint=True):
         return np.linspace(start, stop_, num)
     else:
         return np.linspace(start, stop_, num + 1)[:-1]
-
 
 @jit
 def spherical_to_cartesian(v):

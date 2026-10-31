@@ -62,6 +62,8 @@ atimes  = astropy.time.Time( dates )
 off_s   = (atimes - atimes[0]).jd * 86400
 
 print('*'*100)
+print('Working TLE : {}'.format( TLE ))
+print('*'*100)
 print('Propagating TLE to GCRS')
 tle_eph = propTLEtoGCRS( *TLE, dates )
 
