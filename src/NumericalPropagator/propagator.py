@@ -36,10 +36,10 @@ class propagator( perturbations.perturbations ):
         return self
 
     def propagate_sv( self, 
-                        epoch : astropy.time.Time,
-                        sv : np.array, 
-                        dates : list[ astropy.time.Time]  ,
-                        ):
+                      epoch : astropy.time.Time,
+                      sv : np.array, 
+                      dates : list[ astropy.time.Time]  ,
+                      ):
         offset_s = ( dates.jd - dates.jd[0] ) * 86400
         assert all( np.diff(offset_s) > 0 ) 
         # make sure we have perturbations in this range
@@ -47,15 +47,15 @@ class propagator( perturbations.perturbations ):
             logging.info('current perturbations do not cover range, resetting')
             super().__init__( dates[0] , dates[1] )
         result = solve_ivp(
-            self,
-            (offset_s[0], offset_s[-1] ),
-            sv,
-            args=(),
-            rtol=1e-10,
-            atol=1e-12,
-            method=DOP853,
-            dense_output=True,
-            events=None,
+                        self,
+                        (offset_s[0], offset_s[-1] ),
+                        sv,
+                        args=(),
+                        rtol=1e-10,
+                        atol=1e-12,
+                        method=DOP853,
+                        dense_output=True,
+                        events=None,
         )
         if not result.success: 
             return None
